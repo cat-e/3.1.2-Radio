@@ -1,15 +1,41 @@
 package ru.netology;
 
 public class Radio {
-    private String name;
     private int currentRadioStation;
     private boolean on;
     private int maxRadioStation;
     private int minRadioStation;
+    private int currentVolume;
     private int maxVolume;
     private int minVolume;
-    private boolean next;
-    private boolean prev;
+    private boolean next = true;
+    private boolean prev = true;
+    private boolean plus = true;
+    private boolean minus = true;
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
+    }
+
+    public boolean isPlus() {
+        return plus;
+    }
+
+    public void setPlus(boolean plus) {
+        this.plus = plus;
+    }
+
+    public boolean isMinus() {
+        return minus;
+    }
+
+    public void setMinus(boolean minus) {
+        this.minus = minus;
+    }
 
     public boolean isNext() {
         return next;
@@ -29,38 +55,42 @@ public class Radio {
 
 
     public void changeNextRadioStation() {
-        if (next) {
             currentRadioStation = currentRadioStation + 1;
-        }
         if (currentRadioStation > 9) {
             currentRadioStation = 0;
         }
 
     }
 
-    public int getMaxVolume() {
-        return maxVolume;
+    public void changePrevRadioStation() {
+            currentRadioStation = currentRadioStation - 1;
+        if (currentRadioStation < 0) {
+            currentRadioStation = 9;
+        }
+
     }
+    public void volumeUp() {
+            currentVolume = currentVolume + 1;
+        if (currentVolume >= 10) currentVolume = 10; {
+            return;
+        }
+    }
+
+    public void volumeDown() {
+            currentVolume = currentVolume - 1;
+        if (currentVolume <= 0) currentVolume = 0; {
+            return;
+        }
+    }
+
 
     public void setMaxVolume(int maxVolume) {
         this.maxVolume = maxVolume;
     }
 
-    public int getMinVolume() {
-        return minVolume;
-    }
 
     public void setMinVolume(int minVolume) {
         this.minVolume = minVolume;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getCurrentRadioStation() {
@@ -81,25 +111,8 @@ public class Radio {
 
     private int soundVolume;
 
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
-    public int getMaxRadioStation() {
-        return maxRadioStation;
-    }
-
     public void setMaxRadioStation(int maxRadioStation) {
         this.maxRadioStation = maxRadioStation;
-    }
-
-
-    public int getMinRadioStation() {
-        return minRadioStation;
     }
 
     public void setMinRadioStation(int minRadioStation) {

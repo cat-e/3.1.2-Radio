@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Radio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">smart-house</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">Radio.java</span></div><h1>Radio.java</h1><pre class="source lang-java linenums">package ru.netology;
+
+<span class="fc" id="L3">public class Radio {</span>
+    private int currentRadioStation;
+    private boolean on;
+    private int maxRadioStation;
+    private int minRadioStation;
+    private int currentVolume;
+    private int maxVolume;
+    private int minVolume;
+<span class="fc" id="L11">    private boolean next = true;</span>
+<span class="fc" id="L12">    private boolean prev = true;</span>
+<span class="fc" id="L13">    private boolean plus = true;</span>
+<span class="fc" id="L14">    private boolean minus = true;</span>
+
+    public int getCurrentVolume() {
+<span class="fc" id="L17">        return currentVolume;</span>
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+<span class="fc" id="L21">        this.currentVolume = currentVolume;</span>
+<span class="fc" id="L22">    }</span>
+
+    public boolean isPlus() {
+<span class="nc" id="L25">        return plus;</span>
+    }
+
+    public void setPlus(boolean plus) {
+<span class="nc" id="L29">        this.plus = plus;</span>
+<span class="nc" id="L30">    }</span>
+
+    public boolean isMinus() {
+<span class="nc" id="L33">        return minus;</span>
+    }
+
+    public void setMinus(boolean minus) {
+<span class="nc" id="L37">        this.minus = minus;</span>
+<span class="nc" id="L38">    }</span>
+
+    public boolean isNext() {
+<span class="nc" id="L41">        return next;</span>
+    }
+
+    public void setNext(boolean next) {
+<span class="nc" id="L45">        this.next = next;</span>
+<span class="nc" id="L46">    }</span>
+
+    public boolean isPrev() {
+<span class="nc" id="L49">        return prev;</span>
+    }
+
+    public void setPrev(boolean prev) {
+<span class="nc" id="L53">        this.prev = prev;</span>
+<span class="nc" id="L54">    }</span>
+
+
+    public void changeNextRadioStation() {
+<span class="fc" id="L58">            currentRadioStation = currentRadioStation + 1;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (currentRadioStation &gt; 9) {</span>
+<span class="fc" id="L60">            currentRadioStation = 0;</span>
+        }
+
+<span class="fc" id="L63">    }</span>
+
+    public void changePrevRadioStation() {
+<span class="fc" id="L66">            currentRadioStation = currentRadioStation - 1;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (currentRadioStation &lt; 0) {</span>
+<span class="fc" id="L68">            currentRadioStation = 9;</span>
+        }
+
+<span class="fc" id="L71">    }</span>
+    public void volumeUp() {
+<span class="fc" id="L73">            currentVolume = currentVolume + 1;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (currentVolume &gt;= 10) currentVolume = 10; {</span>
+<span class="fc" id="L75">            return;</span>
+        }
+    }
+
+    public void volumeDown() {
+<span class="fc" id="L80">            currentVolume = currentVolume - 1;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (currentVolume &lt;= 0) currentVolume = 0; {</span>
+<span class="fc" id="L82">            return;</span>
+        }
+    }
+
+
+    public void setMaxVolume(int maxVolume) {
+<span class="fc" id="L88">        this.maxVolume = maxVolume;</span>
+<span class="fc" id="L89">    }</span>
+
+
+    public void setMinVolume(int minVolume) {
+<span class="fc" id="L93">        this.minVolume = minVolume;</span>
+<span class="fc" id="L94">    }</span>
+
+    public int getCurrentRadioStation() {
+<span class="fc" id="L97">        return currentRadioStation;</span>
+    }
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+<span class="fc" id="L101">        this.currentRadioStation = currentRadioStation;</span>
+<span class="fc" id="L102">    }</span>
+
+    public int getSoundVolume() {
+<span class="nc" id="L105">        return soundVolume;</span>
+    }
+
+    public void setSoundVolume(int soundVolume) {
+<span class="nc" id="L109">        this.soundVolume = soundVolume;</span>
+<span class="nc" id="L110">    }</span>
+
+    private int soundVolume;
+
+    public void setMaxRadioStation(int maxRadioStation) {
+<span class="fc" id="L115">        this.maxRadioStation = maxRadioStation;</span>
+<span class="fc" id="L116">    }</span>
+
+    public void setMinRadioStation(int minRadioStation) {
+<span class="fc" id="L119">        this.minRadioStation = minRadioStation;</span>
+<span class="fc" id="L120">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

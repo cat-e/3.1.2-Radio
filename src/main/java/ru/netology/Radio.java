@@ -3,11 +3,11 @@ package ru.netology;
 public class Radio {
     private int currentRadioStation;
     private boolean on;
-    private int maxRadioStation;
-    private int minRadioStation;
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
     private int currentVolume;
-    private int maxVolume;
-    private int minVolume;
+    private int maxVolume = 10;
+    private int minVolume = 0;
     private boolean next = true;
     private boolean prev = true;
     private boolean plus = true;
@@ -55,32 +55,32 @@ public class Radio {
 
 
     public void changeNextRadioStation() {
-            currentRadioStation = currentRadioStation + 1;
-        if (currentRadioStation > 9) {
-            currentRadioStation = 0;
-        }
-
+            currentRadioStation ++;
+            if (currentRadioStation > 9) {
+                currentRadioStation = 0;
+            }
     }
 
     public void changePrevRadioStation() {
-            currentRadioStation = currentRadioStation - 1;
+        currentRadioStation --;
         if (currentRadioStation < 0) {
             currentRadioStation = 9;
         }
 
     }
+
     public void volumeUp() {
-            currentVolume = currentVolume + 1;
-        if (currentVolume >= 10) currentVolume = 10; {
+        if (currentVolume >= maxVolume) {
             return;
         }
+        currentVolume ++;
     }
 
     public void volumeDown() {
-            currentVolume = currentVolume - 1;
-        if (currentVolume <= 0) currentVolume = 0; {
+        if (currentVolume <= minVolume) {
             return;
         }
+        currentVolume --;
     }
 
 
@@ -101,15 +101,6 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public int getSoundVolume() {
-        return soundVolume;
-    }
-
-    public void setSoundVolume(int soundVolume) {
-        this.soundVolume = soundVolume;
-    }
-
-    private int soundVolume;
 
     public void setMaxRadioStation(int maxRadioStation) {
         this.maxRadioStation = maxRadioStation;

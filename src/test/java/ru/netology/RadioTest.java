@@ -1,72 +1,72 @@
 package ru.netology;
 
+import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
-    private Radio radio = new Radio("name");
-    private Radio radio1 = new Radio("name",0);
-    private Radio radio2 = new Radio("name",40,100);
-    private Radio radio3 = new Radio("name",100,100,0);
 
     @Test
-    void shouldUpStation() {
-        Radio radio = new Radio("name");
-        radio.setCurrentRadioStation(4);
-        radio.setMinRadioStation(0);
-        radio.setMaxRadioStation(10);
+    void shouldUpStationMiddle() {
+        Radio radio = new Radio("name", 0, false, 10, 0, 100, 100, 0);
         radio.changeNextRadioStation();
-        assertEquals(5,radio.getCurrentRadioStation());
-
-        radio.setCurrentRadioStation(10);
-        radio.setMinRadioStation(0);
-        radio.setMaxRadioStation(10);
-        radio.changeNextRadioStation();
-        assertEquals(0,radio.getCurrentRadioStation());
+        assertEquals(1, radio.getCurrentRadioStation());
     }
 
     @Test
-    void shouldDownStation() {
-        Radio radio1 = new Radio("name",0);
-        radio1.setCurrentRadioStation(4);
-        radio1.setMaxRadioStation(10);
-        radio1.changePrevRadioStation();
-        assertEquals(3,radio1.getCurrentRadioStation());
-
-        radio1.setCurrentRadioStation(0);
-        radio1.setMaxRadioStation(10);
-        radio1.changePrevRadioStation();
-        assertEquals(10,radio1.getCurrentRadioStation());
-
+    void shouldUpStationMax() {
+        Radio radio1 = new Radio("name", 10, false, 10, 2, 100, 100, 0);
+        radio1.changeNextRadioStation();
+        assertEquals(2, radio1.getCurrentRadioStation());
     }
 
     @Test
-    void shouldVolumeUp() {
-        Radio radio2 = new Radio("name",2,100);
-        radio2.setMinVolume(0);
-        radio2.volumeUp();
-        assertEquals(3,radio2.getCurrentVolume());
+    void shouldDownStationMiddle() {
+        Radio radio2 = new Radio("name", 2, false, 10, 1, 100, 100, 0);
+        radio2.changePrevRadioStation();
+        assertEquals(1, radio2.getCurrentRadioStation());
+    }
 
-        radio2.setMinVolume(0);
-        radio2.setCurrentVolume(100);
-        radio2.volumeUp();
-        assertEquals(100,radio2.getCurrentVolume());
-
-
+    @Test
+    void shouldDownStationFromMin() {
+        Radio radio3 = new Radio("name", 4, false, 10, 0, 100, 100, 0);
+        radio3.setMinRadioStation(3);
+        radio3.setMaxRadioStation(2);
+        radio3.setCurrentRadioStation(2);
+        radio3.changePrevRadioStation();
+        assertEquals(2, radio3.getCurrentRadioStation());
 
     }
 
     @Test
-    void shouldVolumeDown() {
-        Radio radio3 = new Radio("name",100,100,0);
-        radio3.volumeDown();
-        assertEquals(99,radio3.getCurrentVolume());
+    void shouldVolumeUpMiddle() {
+        Radio radio4 = new Radio("name", 0, false, 10, 0, 2, 100, 0);
+        radio4.volumeUp();
+        assertEquals(3, radio4.getCurrentVolume());
+    }
+
+    @Test
+    void shouldVolumeUpMax() {
+        Radio radio5 = new Radio("name", 0, false, 10, 0, 100, 100, 0);
+        radio5.volumeUp();
+        assertEquals(100, radio5.getCurrentVolume());
 
 
-        radio3.setCurrentVolume(0);
-        radio3.volumeDown();
-        assertEquals(0,radio3.getCurrentVolume());
+    }
+
+    @Test
+    void shouldVolumeDownMiddle() {
+        Radio radio6 = new Radio("name", 0, false, 10, 0, 50, 100, 0);
+        radio6.volumeDown();
+        assertEquals(49, radio6.getCurrentVolume());
+    }
+
+    @Test
+    void shouldVolumeDownMin() {
+        Radio radio7 = new Radio("name", 0, false, 10, 0, 0, 100, 0);
+        radio7.volumeDown();
+        assertEquals(0, radio7.getCurrentVolume());
 
     }
 }
